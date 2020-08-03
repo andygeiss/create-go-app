@@ -6,7 +6,6 @@ Create Go apps with with zero configuration by using a single command.
 
 - [Installation]()
 - [Creating an App]()
-- [Features]()
 - [Project Structure]()
 
 ## Installation
@@ -15,10 +14,24 @@ Create Go apps with with zero configuration by using a single command.
 
 ## Creating an App
 
-    create-go-app -type app -name <App Name>
-
-## Features
+    create-go-app -type app -name <app name>
 
 ## Project Structure
 
-    
+    ├── go.mod
+    ├── internal
+    │   └── status
+    │       ├── service.go
+    │       └── service_test.go
+    ├── main.go
+    └── pkg
+        ├── api
+        │   ├── api.go
+        │   └── api.http
+        ├── assert
+        │   └── assert.go
+        └── server
+            ├── handlers.go
+            ├── middleware.go
+            ├── routes.go
+            └── server.go

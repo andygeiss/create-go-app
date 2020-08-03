@@ -31,7 +31,7 @@ func main() {
 		}
 	default:
 		fmt.Printf(`
-Usage: %s -type <api|app> -name <project name> -path <package name>
+Usage: %s -type <api|app> -name <app name> -path <package path>
 
   %s creates a minimal Golang microservice project from scratch.
 
