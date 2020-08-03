@@ -1,0 +1,13 @@
+package testdata
+
+// EchoRequest ...
+type EchoRequest struct{}
+
+// EchoResponse ...
+type EchoResponse struct{}
+
+// HealthRequest ...
+type HealthRequest struct{}
+
+// HealthResponse ...
+type HealthResponse struct{}
