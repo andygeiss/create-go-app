@@ -52,4 +52,11 @@ func NewServer() *Server {
 	}
 	srv.routes()
 	return srv
-}`
+}
+
+func (s *Server) increaseErrorCount(r *http.Request) {
+	s.metrics.mutex.Lock()
+	s.metrics.ErrorCount[r.RequestURI]++
+	s.metrics.mutex.Unlock()
+}
+`
