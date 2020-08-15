@@ -32,6 +32,7 @@ func (p *Project) Craft() error {
 	// Add files.
 	files := map[string]string{
 		filepath.Join(p.Name, "main.go"):                               templates.MainGo,
+		filepath.Join(p.Name, "Makefile"):                              templates.Makefile,
 		filepath.Join(p.Name, "internal", "status", "service.go"):      templates.ServiceGo,
 		filepath.Join(p.Name, "internal", "status", "service_test.go"): templates.ServiceTestGo,
 		filepath.Join(p.Name, "pkg", "api", "api.http"):                templates.APIHttp,
