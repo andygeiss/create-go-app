@@ -18,9 +18,7 @@ func (s *Server) handleStatus() http.HandlerFunc {
 		// Decode the request from the client.
 		req := new(api.StatusRequest)
 		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-			s.metrics.mutex.Lock()
-			s.metrics.ErrorCount[r.RequestURI]++
-			s.metrics.mutex.Unlock()
+			s.increaseErrorCount(r)
 			s.logger.Printf("%-6s %-20s %-50s %-s", "ERROR", r.RemoteAddr, r.RequestURI, err.Error())
 			http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 			return
@@ -28,18 +26,14 @@ func (s *Server) handleStatus() http.HandlerFunc {
 		// Call the service.
 		res, err := s.statusService(context.Background(), req)
 		if err != nil {
-			s.metrics.mutex.Lock()
-			s.metrics.ErrorCount[r.RequestURI]++
-			s.metrics.mutex.Unlock()
+			s.increaseErrorCount(r)
 			s.logger.Printf("%-6s %-20s %-50s %-s", "ERROR", r.RemoteAddr, r.RequestURI, err.Error())
 			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 			return
 		}
 		// Encode the response and send it to the client.
 		if err := json.NewEncoder(w).Encode(&res); err != nil {
-			s.metrics.mutex.Lock()
-			s.metrics.ErrorCount[r.RequestURI]++
-			s.metrics.mutex.Unlock()
+			s.increaseErrorCount(r)
 			s.logger.Printf("%-6s %-20s %-50s %-s", "ERROR", r.RemoteAddr, r.RequestURI, err.Error())
 			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		}
