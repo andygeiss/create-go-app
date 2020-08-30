@@ -17,7 +17,7 @@ var (
 func main() {
 	flagName := flag.String("name", "hello_world", "app name")
 	flagPath := flag.String("path", "", "app path")
-	flagType := flag.String("type", "", "artefact type (app|api)")
+	flagType := flag.String("type", "", "artefact type (app|api|bin|lib)")
 	flag.Parse()
 	// Select the action
 	switch *flagType {
@@ -31,7 +31,7 @@ func main() {
 		}
 	default:
 		fmt.Printf(`
-Usage: %s -type <api|app> -name <app name> -path <package path>
+Usage: %s -type <api|app|bin|lib> -name <app name> -path <package path>
 
   %s creates a minimal Golang microservice project from scratch.
 

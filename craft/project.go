@@ -1,7 +1,6 @@
 package craft
 
 import (
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -31,7 +30,7 @@ func (p *Project) Craft() error {
 	p.Path = readProjectPathFromModFile(p.Name)
 	// Add files.
 	files := map[string]string{
-		filepath.Join(p.Name, "main.go"):                               templates.MainGo,
+		filepath.Join(p.Name, "main.go"):                               templates.MainGo4App,
 		filepath.Join(p.Name, "Makefile"):                              templates.Makefile,
 		filepath.Join(p.Name, "internal", "status", "service.go"):      templates.ServiceGo,
 		filepath.Join(p.Name, "internal", "status", "service_test.go"): templates.ServiceTestGo,
@@ -66,9 +65,4 @@ func NewProject(build, generator, name, version string) *Project {
 		Name:      name,
 		Version:   version,
 	}
-}
-
-func readContentFromFile(filename string) string {
-	content, _ := ioutil.ReadFile(filename)
-	return string(content)
 }
