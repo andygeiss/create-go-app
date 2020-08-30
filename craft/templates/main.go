@@ -27,8 +27,8 @@ func main() {
 var MainGo4Bin = `package main
 
 import (
-	"log"
-	"net/http"
+	"context"
+	"fmt"
 
 	"{{ .Path }}/internal/status"
 	"{{ .Path }}/pkg/api"
@@ -40,6 +40,7 @@ var (
 )
 
 func main() {
-	res := status.Service()(context.Background(), &api.StatusRequest{})
+	res, err := status.Service()(context.Background(), &api.StatusRequest{})
+	fmt.Printf("Error is %v\n", err)
 	fmt.Printf("StatusResponse is %v\n", res)
 }`
