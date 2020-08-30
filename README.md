@@ -12,26 +12,16 @@ Create Go apps with with zero configuration by using a single command.
 
     go get -u github.com/andygeiss/create-go-app
 
-## Creating an App
+## Creating Go Apps
 
-    create-go-app -type app -name <app name>
+Create a backend server app:
 
-## Project Structure
+    create-go-app -type app -name <name>
 
-    ├── go.mod
-    ├── internal
-    │   └── status
-    │       ├── service.go
-    │       └── service_test.go
-    ├── main.go
-    └── pkg
-        ├── api
-        │   ├── api.go
-        │   └── api.http
-        ├── assert
-        │   └── assert.go
-        └── server
-            ├── handlers.go
-            ├── middleware.go
-            ├── routes.go
-            └── server.go
+Create a Go binary project:
+
+    create-go-app -type bin -name <name>
+
+Create a Go library/module:
+
+    create-go-app -type lib -name <name>

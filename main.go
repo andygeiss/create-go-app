@@ -29,6 +29,14 @@ func main() {
 		if err := craft.NewProject(build, name, *flagName, version).Craft(); err != nil {
 			log.Fatal(err)
 		}
+	case "bin":
+		if err := craft.NewBin(build, name, *flagName, version).Craft(); err != nil {
+			log.Fatal(err)
+		}
+	case "lib":
+		if err := craft.NewBin(build, name, *flagName, version).Craft(); err != nil {
+			log.Fatal(err)
+		}
 	default:
 		fmt.Printf(`
 Usage: %s -type <api|app|bin|lib> -name <app name> -path <package path>
