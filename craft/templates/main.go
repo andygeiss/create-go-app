@@ -35,12 +35,14 @@ import (
 )
 
 var (
-	build string = "no-build"
+	build 	string = "no-build"
+	name    string = "no-name"
 	version string = "no-version"
 )
 
 func main() {
 	res, err := status.Service()(context.Background(), &api.StatusRequest{})
+	fmt.Printf("%s %s (%s)\n", name, version, build)
 	fmt.Printf("Error is %v\n", err)
 	fmt.Printf("StatusResponse is %v\n", res)
 }`
