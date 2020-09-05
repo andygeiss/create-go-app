@@ -47,10 +47,12 @@ class ViewModel extends FlatElement {
              this.setState("{{ lc $name }} result", data;
 		});
 		{{ end }}
-    }
+	}
+	{{ range $i, $name := .Services }}
     {{ lc $name }}(data) {
         this.emit("{{ lc $name }}", data);
-    }
+	}
+	{{ end }}
 }
 
 const model = new Model();
