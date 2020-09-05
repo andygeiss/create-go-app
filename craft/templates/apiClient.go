@@ -46,7 +46,7 @@ class ViewModel extends FlatElement {
         // add event listeners
 		{{ range $i, $name := .Services }}
         this.on("{{ lc $name }} done", (data) => {
-             this.setState("{{ lc $name }} result", data;
+             this.setState("{{ lc $name }} result", data);
 		});
 		{{ end }}
 	}
