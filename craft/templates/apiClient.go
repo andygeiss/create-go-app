@@ -20,4 +20,37 @@ const {{ lc .Name }} = {
 	}
 	{{ end }}
 };
+
+// Model handles the business logic by using generated functions.
+class Model extends FlatElement {
+    // constructor ...
+    constructor() {
+        super();
+		// add event listeners
+		{{ range $i, $name := .Services }}
+        this.on("{{ lc $name }}", async (params) => {
+            let result = await {{ lc .Name }}.{{ lc $name }}(params);
+            this.emit("{{ lc $name }} done", result);
+		});
+		{{ end }}
+    }
+}
+
+// ViewModel handles the state and provides a simple API.
+class ViewModel extends FlatElement {
+    // constructor ...
+    constructor() {
+        super();
+        // add event listeners
+        this.on("{{ lc $name }} done", (data) => {
+             this.setState("{{ lc $name }} result", data;
+        });
+    }
+    {{ lc $name }}(data) {
+        this.emit("{{ lc $name }}", data);
+    }
+}
+
+const model = new Model();
+const viewModel = new ViewModel();
 `
