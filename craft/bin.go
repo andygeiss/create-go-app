@@ -36,6 +36,8 @@ func (b *Bin) Craft() error {
 		filepath.Join(b.Name, "internal", "status", "service_test.go"): templates.ServiceTestGo,
 		filepath.Join(b.Name, "pkg", "api", "api.go"):                  templates.APIGo,
 		filepath.Join(b.Name, "pkg", "assert", "assert.go"):            templates.AssertGo,
+		filepath.Join(b.Name, "pkg", "event", "bus.go"):                templates.BusGo,
+		filepath.Join(b.Name, "pkg", "event", "bus_test.go"):           templates.BusTest,
 	}
 	if err := generate.FilesByData(files, b); err != nil {
 		return err
