@@ -39,8 +39,8 @@ package event_test
 import (
 	"testing"
 
-	"{{ .Path }}//pkg/assert"
-	"{{ .Path }}//pkg/event"
+	"{{ .Path }}/pkg/assert"
+	"{{ .Path }}/pkg/event"
 )
 
 func TestEventBusPublish(t *testing.T) {
