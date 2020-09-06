@@ -37,6 +37,8 @@ func (p *Project) Craft() error {
 		filepath.Join(p.Name, "pkg", "api", "api.http"):                templates.APIHttp,
 		filepath.Join(p.Name, "pkg", "api", "api.go"):                  templates.APIGo,
 		filepath.Join(p.Name, "pkg", "assert", "assert.go"):            templates.AssertGo,
+		filepath.Join(p.Name, "pkg", "event", "bus.go"):                templates.BusGo,
+		filepath.Join(p.Name, "pkg", "event", "bus_test.go"):           templates.BusTest,
 		filepath.Join(p.Name, "pkg", "server", "handlers.go"):          templates.HandlersGo,
 		filepath.Join(p.Name, "pkg", "server", "middleware.go"):        templates.MiddlewareGo,
 		filepath.Join(p.Name, "pkg", "server", "routes.go"):            templates.RoutesGo,

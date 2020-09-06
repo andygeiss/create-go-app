@@ -25,6 +25,8 @@ func TestProjectCraft(t *testing.T) {
 	assert.That("file   [foo/pkg/api/api.go] exists", t, path.HasFile(filepath.Join("foo", "pkg", "api", "api.go")), true)
 	assert.That("file   [foo/pkg/api/api.http] exists", t, path.HasFile(filepath.Join("foo", "pkg", "api", "api.http")), true)
 	assert.That("file   [foo/pkg/assert/assert.go] exists", t, path.HasFile(filepath.Join("foo", "pkg", "assert", "assert.go")), true)
+	assert.That("file   [foo/pkg/event/bus.go] exists", t, path.HasFile(filepath.Join("foo", "pkg", "event", "bus.go")), true)
+	assert.That("file   [foo/pkg/event/bus_test.go] exists", t, path.HasFile(filepath.Join("foo", "pkg", "event", "bus_test.go")), true)
 	assert.That("file   [foo/pkg/server/handlers.go] exists", t, path.HasFile(filepath.Join("foo", "pkg", "server", "handlers.go")), true)
 	assert.That("file   [foo/pkg/server/middleware.go] exists", t, path.HasFile(filepath.Join("foo", "pkg", "server", "middleware.go")), true)
 	assert.That("file   [foo/pkg/server/routes.go] exists", t, path.HasFile(filepath.Join("foo", "pkg", "server", "routes.go")), true)
