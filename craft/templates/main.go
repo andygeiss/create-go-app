@@ -8,6 +8,7 @@ import (
 	"net/http"
 
 	"{{ .Path }}/internal/status"
+	"{{ .Path }}/pkg/event"
 	"{{ .Path }}/pkg/server"
 )
 
