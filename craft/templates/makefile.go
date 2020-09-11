@@ -2,7 +2,9 @@ package templates
 
 // Makefile ...
 var Makefile = `
+
 BUILD := $(shell git rev-parse --short HEAD)
+MODULE := $(shell cut -f2 -d" " go.mod | head -1)
 NAME := $(shell basename "$(PWD)")
 VERSION := $(shell git describe --tags)
 
@@ -13,7 +15,15 @@ all : compile run
 
 compile :
 	@go build $(LDFLAGS) -o $(BIN) main.go
+	
+licenses :
+	@go-licenses csv $(MODULE) > LICENSE.csv
+
+setup :
+	@go get -u github.com/google/go-licenses
+	@go install github.com/google/go-licenses
 
 run :
 	$(BIN)
+
 `
