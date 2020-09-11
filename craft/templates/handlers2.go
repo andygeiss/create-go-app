@@ -24,6 +24,8 @@ func (s *Server) handle{{ $name }}() http.HandlerFunc {
 			http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 			return
 		}
+		// Publish the event.
+		s.bus.Publish("{{ lc $name }}", req)
 		// Call the service.
 		res, err := s.{{ lc $name }}Service(context.Background(), req)
 		if err != nil {
@@ -32,6 +34,8 @@ func (s *Server) handle{{ $name }}() http.HandlerFunc {
 			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 			return
 		}
+		// Publish the event.
+		s.bus.Publish("{{ lc $name }} done", req)
 		// Encode the response and send it to the client.
 		if err := json.NewEncoder(w).Encode(&res); err != nil {
 			s.increaseErrorCount(r)

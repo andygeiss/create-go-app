@@ -23,6 +23,8 @@ func (s *Server) handleStatus() http.HandlerFunc {
 			http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 			return
 		}
+		// Publish the event.
+		s.bus.Publish("status", req)
 		// Call the service.
 		res, err := s.statusService(context.Background(), req)
 		if err != nil {
@@ -31,6 +33,8 @@ func (s *Server) handleStatus() http.HandlerFunc {
 			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 			return
 		}
+		// Publish the event.
+		s.bus.Publish("status done", req)
 		// Encode the response and send it to the client.
 		if err := json.NewEncoder(w).Encode(&res); err != nil {
 			s.increaseErrorCount(r)
