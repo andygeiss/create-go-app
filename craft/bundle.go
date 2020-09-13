@@ -6,6 +6,7 @@ import (
 
 	"github.com/andygeiss/create-go-app/craft/templates"
 	"github.com/andygeiss/create-go-app/pkg/generate"
+	"github.com/andygeiss/create-go-app/pkg/merge"
 )
 
 // Bundle ...
@@ -34,6 +35,22 @@ func (b *Bundle) Craft() error { // Add files.
 		filepath.Join(b.Name, "web", "static", ".gitkeep"):      templates.Gitkeep,
 	}
 	if err := generate.FilesByData(files, b); err != nil {
+		return err
+	}
+	// Merge JavaScript files into one file named bundle.js.
+	if err := merge.Files(
+		filepath.Join(b.Name, "web", "static", "bundle.js"),
+		filepath.Join(b.Name, "web", "src", "flat-element.js"),
+		filepath.Join(b.Name, "web", "src", "app_client.js"),
+		filepath.Join(b.Name, "web", "src", "app.js"),
+	); err != nil {
+		return err
+	}
+	// Merge JavaScript files into one file named bundle.js.
+	if err := merge.Files(
+		filepath.Join(b.Name, "web", "static", "bundle.scss"),
+		filepath.Join(b.Name, "web", "src", "app.scss"),
+	); err != nil {
 		return err
 	}
 	os.Chdir(wd)
