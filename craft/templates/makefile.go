@@ -11,11 +11,14 @@ VERSION := $(shell git describe --tags)
 BIN := $(GOPATH)/bin/$(NAME)
 LDFLAGS=-ldflags "-s -w -X=main.build=$(BUILD) -X=main.name=$(NAME) -X=main.version=$(VERSION)"
 
-all : compile run
+all : generate compile run
 
 compile :
 	@go build $(LDFLAGS) -o $(BIN) main.go
-	
+
+generate :
+	@go generate ./...
+
 licenses :
 	@go-licenses csv $(MODULE) > LICENSE.csv
 
