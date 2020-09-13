@@ -11,10 +11,10 @@ import (
 )
 
 func TestBundleCraft(t *testing.T) {
-	os.Chdir("testdata")
 	//os.RemoveAll("foo")
-	c := craft.NewBundle("b", "g", "foo", "v")
+	c := craft.NewBundle("b", "g", "foo", "github.com/andygeiss/create-go-app/craft/testdata", "v")
 	err := c.Craft()
+	os.Chdir("testdata")
 	assert.That("err should be nil", t, err, nil)
 	assert.That("file   [foo/web/src/api_client.js] exists", t, path.HasFile(filepath.Join("foo", "web", "src", "api_client.js")), true)
 	assert.That("file   [foo/web/src/app.js] exists", t, path.HasFile(filepath.Join("foo", "web", "src", "app.js")), true)
