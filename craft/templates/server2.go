@@ -12,6 +12,7 @@ import (
 	"sync"
 
 	"{{ .Path }}/pkg/api"
+	"{{ .Path }}/pkg/event"
 )
 
 type metrics struct {
