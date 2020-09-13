@@ -22,7 +22,7 @@ type Bundle struct {
 // Craft ...
 func (b *Bundle) Craft() error { // Add files.
 	// Set basedir.
-	baseDir := filepath.Join(os.Getenv("GOPATH"), "src", b.Path, b.Name)
+	baseDir := filepath.Join(os.Getenv("GOPATH"), "src", b.Path)
 	// Add files.
 	files := map[string]string{
 		filepath.Join(baseDir, "web", "src", "api_client.js"):    templates.APIClient,
