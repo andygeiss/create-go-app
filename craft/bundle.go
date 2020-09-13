@@ -1,6 +1,7 @@
 package craft
 
 import (
+	"os"
 	"path/filepath"
 
 	"github.com/andygeiss/create-go-app/craft/templates"
@@ -19,6 +20,7 @@ type Bundle struct {
 
 // Craft ...
 func (b *Bundle) Craft() error { // Add files.
+	os.Chdir("../..")
 	files := map[string]string{
 		filepath.Join(b.Name, "web", "src", "api_client.js"):    templates.APIClient,
 		filepath.Join(b.Name, "web", "src", "app.js"):           templates.BundleAppJs,
