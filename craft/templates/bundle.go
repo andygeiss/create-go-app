@@ -160,7 +160,7 @@ var BundleIndexHTML = `<!DOCTYPE html>
   <meta content="0" http-equiv="Expires" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="bundle.min.css" />
-  <title> App </title>
+  <title> {{ .Name }} </title>
 </head>
 
 <body>
