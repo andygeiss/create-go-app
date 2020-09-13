@@ -17,7 +17,7 @@ var (
 func main() {
 	flagName := flag.String("name", "hello_world", "app name")
 	flagPath := flag.String("path", "", "app path")
-	flagType := flag.String("type", "", "artefact type (app|api|bin|lib)")
+	flagType := flag.String("type", "", "artefact type (app|api|bin|bundle|lib)")
 	flag.Parse()
 	// Select the action
 	switch *flagType {
@@ -33,13 +33,17 @@ func main() {
 		if err := craft.NewBin(build, name, *flagName, version).Craft(); err != nil {
 			log.Fatal(err)
 		}
+	case "bundle":
+		if err := craft.NewBin(build, name, *flagName, version).Craft(); err != nil {
+			log.Fatal(err)
+		}
 	case "lib":
 		if err := craft.NewLib(build, name, *flagName, version).Craft(); err != nil {
 			log.Fatal(err)
 		}
 	default:
 		fmt.Printf(`
-Usage: %s -type <api|app|bin|lib> -name <app name> -path <package path>
+Usage: %s -type <api|app|bin|bundle|lib> -name <app name> -path <package path>
 
   %s creates a minimal Golang microservice project from scratch.
 
