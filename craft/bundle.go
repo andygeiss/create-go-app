@@ -21,8 +21,9 @@ type Bundle struct {
 
 // Craft ...
 func (b *Bundle) Craft() error { // Add files.
-	wd, _ := os.Getwd()
-	os.Chdir("../../..")
+	// Create project dir.
+	os.MkdirAll(filepath.Join(b.Name), 0755)
+	// Add files.
 	files := map[string]string{
 		filepath.Join(b.Name, "web", "src", "api_client.js"):    templates.APIClient,
 		filepath.Join(b.Name, "web", "src", "app.js"):           templates.BundleAppJs,
@@ -53,7 +54,6 @@ func (b *Bundle) Craft() error { // Add files.
 	); err != nil {
 		return err
 	}
-	os.Chdir(wd)
 	return nil
 }
 

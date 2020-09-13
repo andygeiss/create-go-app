@@ -1,6 +1,7 @@
 package craft_test
 
 import (
+	"os"
 	"path/filepath"
 	"testing"
 
@@ -10,6 +11,8 @@ import (
 )
 
 func TestBundleCraft(t *testing.T) {
+	os.Chdir("testdata")
+	//os.RemoveAll("foo")
 	c := craft.NewBundle("b", "g", "foo", "v")
 	err := c.Craft()
 	assert.That("err should be nil", t, err, nil)
@@ -24,4 +27,5 @@ func TestBundleCraft(t *testing.T) {
 	assert.That("file   [foo/web/static/api.http] exists", t, path.HasFile(filepath.Join("foo", "web", "static", "api.http")), true)
 	assert.That("file   [foo/web/static/bundle.js] exists", t, path.HasFile(filepath.Join("foo", "web", "static", "bundle.js")), true)
 	assert.That("file   [foo/web/static/bundle.scss] exists", t, path.HasFile(filepath.Join("foo", "web", "static", "bundle.scss")), true)
+	//os.RemoveAll("foo")
 }
