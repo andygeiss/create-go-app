@@ -23,6 +23,7 @@ type metrics struct {
 
 // Server ...
 type Server struct {
+	bus           *event.Bus
 	logger        *log.Logger
 	metrics       *metrics
 	router        *http.ServeMux
@@ -43,8 +44,9 @@ func (s *Server) With{{ $name }}Service(service api.{{ $name }}Service) {
 {{ end }}
 
 // NewServer ...
-func NewServer() *Server {
+func NewServer(bus *event.Bus) *Server {
 	srv := &Server{
+		bus:    bus,
 		logger: log.New(os.Stdout, "", log.LstdFlags),
 		metrics: &metrics{
 			ErrorCount:     make(map[string]int),
