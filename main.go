@@ -34,7 +34,7 @@ func main() {
 			log.Fatal(err)
 		}
 	case "bundle":
-		if err := craft.NewBin(build, name, *flagName, version).Craft(); err != nil {
+		if err := craft.NewBundle(build, name, *flagName, version).Craft(); err != nil {
 			log.Fatal(err)
 		}
 	case "lib":
