@@ -11,8 +11,8 @@ import (
 )
 
 func TestBundleCraft(t *testing.T) {
-	//os.RemoveAll("foo")
-	c := craft.NewBundle("b", "g", "foo", "github.com/andygeiss/create-go-app/craft/testdata", "v")
+	os.RemoveAll("testdata")
+	c := craft.NewBundle("b", "g", "foo", "github.com/andygeiss/create-go-app/craft/testdata/foo", "v")
 	err := c.Craft()
 	os.Chdir("testdata")
 	assert.That("err should be nil", t, err, nil)
@@ -27,5 +27,5 @@ func TestBundleCraft(t *testing.T) {
 	assert.That("file   [foo/web/static/api.http] exists", t, path.HasFile(filepath.Join("foo", "web", "static", "api.http")), true)
 	assert.That("file   [foo/web/static/bundle.js] exists", t, path.HasFile(filepath.Join("foo", "web", "static", "bundle.js")), true)
 	assert.That("file   [foo/web/static/bundle.scss] exists", t, path.HasFile(filepath.Join("foo", "web", "static", "bundle.scss")), true)
-	//os.RemoveAll("foo")
+	os.RemoveAll("foo")
 }

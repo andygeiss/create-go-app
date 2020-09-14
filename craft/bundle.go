@@ -42,7 +42,7 @@ func (b *Bundle) Craft() error { // Add files.
 	if err := merge.Files(
 		filepath.Join(baseDir, "web", "static", "bundle.js"),
 		filepath.Join(baseDir, "web", "src", "flat-element.js"),
-		filepath.Join(baseDir, "web", "src", "app_client.js"),
+		filepath.Join(baseDir, "web", "src", "api_client.js"),
 		filepath.Join(baseDir, "web", "src", "app.js"),
 	); err != nil {
 		return err
