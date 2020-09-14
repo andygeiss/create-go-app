@@ -25,7 +25,10 @@ func TestBundleCraft(t *testing.T) {
 	assert.That("file   [foo/web/src/index.html] exists", t, path.HasFile(filepath.Join("foo", "web", "src", "index.html")), true)
 	assert.That("file   [foo/web/static/.gitkeep] exists", t, path.HasFile(filepath.Join("foo", "web", "static", ".gitkeep")), true)
 	assert.That("file   [foo/web/static/api.http] exists", t, path.HasFile(filepath.Join("foo", "web", "static", "api.http")), true)
-	assert.That("file   [foo/web/static/bundle.js] exists", t, path.HasFile(filepath.Join("foo", "web", "static", "bundle.js")), true)
-	assert.That("file   [foo/web/static/bundle.scss] exists", t, path.HasFile(filepath.Join("foo", "web", "static", "bundle.scss")), true)
+	assert.That("file   [foo/web/static/bundle.min.css] exists", t, path.HasFile(filepath.Join("foo", "web", "static", "bundle.min.css")), true)
+	assert.That("file   [foo/web/static/bundle.min.js] exists", t, path.HasFile(filepath.Join("foo", "web", "static", "bundle.min.js")), true)
+	assert.That("file   [foo/web/static/bundle.css] not exists", t, path.HasFile(filepath.Join("foo", "web", "static", "bundle.css")), false)
+	assert.That("file   [foo/web/static/bundle.js] not exists", t, path.HasFile(filepath.Join("foo", "web", "static", "bundle.js")), false)
+	assert.That("file   [foo/web/static/index.html] exists", t, path.HasFile(filepath.Join("foo", "web", "static", "index.html")), true)
 	os.RemoveAll("foo")
 }
