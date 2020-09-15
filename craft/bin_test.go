@@ -30,5 +30,8 @@ func TestBinCraft(t *testing.T) {
 	assert.That("file   [foo/pkg/server/middleware.go] exists", t, path.HasFile(filepath.Join("foo", "pkg", "server", "middleware.go")), true)
 	assert.That("file   [foo/pkg/server/routes.go] exists", t, path.HasFile(filepath.Join("foo", "pkg", "server", "routes.go")), true)
 	assert.That("file   [foo/pkg/server/server.go] exists", t, path.HasFile(filepath.Join("foo", "pkg", "server", "server.go")), true)
+	assert.That("file   [foo/web/src/index.html] exists", t, path.HasFile(filepath.Join("foo", "web", "src", "index.html")), true)
+	assert.That("file   [foo/web/src/app.js] exists", t, path.HasFile(filepath.Join("foo", "web", "src", "app.js")), true)
+	assert.That("file   [foo/web/src/app.scss] exists", t, path.HasFile(filepath.Join("foo", "web", "src", "app.scss")), true)
 	os.RemoveAll("foo")
 }

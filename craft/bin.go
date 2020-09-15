@@ -42,6 +42,9 @@ func (b *Bin) Craft() error {
 		filepath.Join(b.Name, "pkg", "server", "middleware.go"):        templates.MiddlewareGo,
 		filepath.Join(b.Name, "pkg", "server", "routes.go"):            templates.RoutesGo,
 		filepath.Join(b.Name, "pkg", "server", "server.go"):            templates.ServerGo,
+		filepath.Join(b.Name, "web", "src", "app.js"):                  templates.BundleAppJs,
+		filepath.Join(b.Name, "web", "src", "app.scss"):                templates.BundleAppScss,
+		filepath.Join(b.Name, "web", "src", "index.html"):              templates.BundleIndexHTML,
 	}
 	if err := generate.FilesByData(files, b); err != nil {
 		return err

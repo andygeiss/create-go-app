@@ -27,12 +27,9 @@ func (b *Bundle) Craft() error { // Add files.
 	// Add files.
 	files := map[string]string{
 		filepath.Join(baseDir, "web", "src", "api_client.js"):    templates.APIClient,
-		filepath.Join(baseDir, "web", "src", "app.js"):           templates.BundleAppJs,
-		filepath.Join(baseDir, "web", "src", "app.scss"):         templates.BundleAppScss,
 		filepath.Join(baseDir, "web", "src", "flat-element.js"):  templates.BundleFlatElementJs,
 		filepath.Join(baseDir, "web", "src", "flat-mixins.scss"): templates.BundleFlatMixinsScss,
 		filepath.Join(baseDir, "web", "src", "flat-reset.scss"):  templates.BundleFlatResetScss,
-		filepath.Join(baseDir, "web", "src", "index.html"):       templates.BundleIndexHTML,
 		filepath.Join(baseDir, "web", "static", "api.http"):      templates.APIHttp,
 		filepath.Join(baseDir, "web", "static", ".gitkeep"):      templates.Gitkeep,
 	}
