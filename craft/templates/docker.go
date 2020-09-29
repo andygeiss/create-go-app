@@ -10,6 +10,6 @@ RUN go build -ldflags "-s -w -X=main.build={{ .Build }} -X=main.name={{ .Name }}
 
 FROM scratch
 COPY --from=compile /go/src/app/app /app
-COPY --from=compile /go/src/app/web /web
+COPY --from=compile /go/src/app/web/static /web/static
 CMD ["/app"]
 `
