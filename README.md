@@ -6,7 +6,6 @@ Create Go apps with with zero configuration by using a single command.
 
 - [Installation]()
 - [Creating an App]()
-- [Project Structure]()
 
 ## Installation
 
@@ -14,14 +13,10 @@ Create Go apps with with zero configuration by using a single command.
 
 ## Creating Go Apps
 
-Create a backend server app:
-
-    create-go-app -type app -name <name>
-
-Create a Go binary project:
+Create a Go binary:
 
     create-go-app -type bin -name <name>
 
-Create a Go library/module:
+Create a Go library:
 
     create-go-app -type lib -name <name>

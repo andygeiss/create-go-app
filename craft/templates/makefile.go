@@ -35,4 +35,7 @@ setup :
 run :
 	$(BIN)
 
+run-container :
+	@docker rm -f $(NAME) ; /bin/true
+	@docker run -p 3000:3000 -dit --name $(NAME) $(NAME):$(VERSION)
 `

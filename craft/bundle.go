@@ -26,7 +26,6 @@ func (b *Bundle) Craft() error { // Add files.
 	baseDir := filepath.Join(os.Getenv("GOPATH"), "src", b.Path)
 	// Add files.
 	files := map[string]string{
-		filepath.Join(baseDir, "web", "src", "api_client.js"):    templates.APIClient,
 		filepath.Join(baseDir, "web", "src", "flat-element.js"):  templates.BundleFlatElementJs,
 		filepath.Join(baseDir, "web", "src", "flat-mixins.scss"): templates.BundleFlatMixinsScss,
 		filepath.Join(baseDir, "web", "src", "flat-reset.scss"):  templates.BundleFlatResetScss,

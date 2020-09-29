@@ -16,7 +16,6 @@ func TestBundleCraft(t *testing.T) {
 	err := c.Craft()
 	os.Chdir("testdata")
 	assert.That("err should be nil", t, err, nil)
-	assert.That("file   [foo/web/src/api_client.js] exists", t, path.HasFile(filepath.Join("foo", "web", "src", "api_client.js")), true)
 	assert.That("file   [foo/web/src/flat-element.js] exists", t, path.HasFile(filepath.Join("foo", "web", "src", "flat-element.js")), true)
 	assert.That("file   [foo/web/src/flat-mixins.scss] exists", t, path.HasFile(filepath.Join("foo", "web", "src", "flat-mixins.scss")), true)
 	assert.That("file   [foo/web/src/flat-reset.scss] exists", t, path.HasFile(filepath.Join("foo", "web", "src", "flat-reset.scss")), true)
