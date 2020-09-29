@@ -13,7 +13,13 @@ LDFLAGS=-ldflags "-s -w -X=main.build=$(BUILD) -X=main.name=$(NAME) -X=main.vers
 
 all : generate compile run
 
+build-image :
+	@docker build -t $(NAME):$(VERSION) -f build/Dockerfile .
+	@docker tag $(NAME):$(VERSION) $(NAME):latest
+
 compile :
+	@go mod tidy
+	@go mod vendor
 	@go build $(LDFLAGS) -o $(BIN) main.go
 
 generate :
