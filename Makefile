@@ -18,4 +18,4 @@ setup :
 	@go install github.com/google/go-licenses
 	@sudo apt-get install -y git default-jre npm sassc
 	@sudo npm -g install autoprefixer npm postcss-cli 
-	@cp vendor/google/closure-compiler/*.* $(GOPATH)/bin/
+	@cp tools/google/closure-compiler/*.* $(GOPATH)/bin/
