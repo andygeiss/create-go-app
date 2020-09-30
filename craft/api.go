@@ -1,6 +1,7 @@
 package craft
 
 import (
+	"bytes"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -12,16 +13,23 @@ import (
 
 // API ...
 type API struct {
-	Build     string   `json:"build"`
-	Generator string   `json:"generator"`
-	Name      string   `json:"name"`
-	Path      string   `json:"path"`
-	Services  []string `json:"services"`
-	Version   string   `json:"version"`
+	Build      string   `json:"build"`
+	Generator  string   `json:"generator"`
+	GitVersion string   `json:"git_version"`
+	Name       string   `json:"name"`
+	Path       string   `json:"path"`
+	Services   []string `json:"services"`
+	Version    string   `json:"version"`
 }
 
 // Craft ...
 func (a *API) Craft() error {
+	// Get the Git version
+	var buf bytes.Buffer
+	cmd := exec.Command("git", "describe", "--tags")
+	cmd.Stdout = &buf
+	cmd.Run()
+	a.GitVersion = buf.String()
 	// Parse the API and get the services.
 	parser := parse.NewParser()
 	if err := parser.Parse(); err != nil {
