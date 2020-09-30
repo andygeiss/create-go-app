@@ -36,6 +36,7 @@ func (a *API) Craft() error {
 		filepath.Join(baseDir, "pkg", "server", "routes.go"):   templates.Routes2Go,
 		filepath.Join(baseDir, "pkg", "server", "server.go"):   templates.Server2Go,
 		filepath.Join(baseDir, "web", "src", "api_client.js"):  templates.APIClient,
+		filepath.Join(baseDir, "web", "static", "api.http"):    templates.APIHttp,
 	}
 	if err := generate.FilesByData(files, a); err != nil {
 		return err

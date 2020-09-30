@@ -29,7 +29,6 @@ func (b *Bundle) Craft() error { // Add files.
 		filepath.Join(baseDir, "web", "src", "flat-element.js"):  templates.BundleFlatElementJs,
 		filepath.Join(baseDir, "web", "src", "flat-mixins.scss"): templates.BundleFlatMixinsScss,
 		filepath.Join(baseDir, "web", "src", "flat-reset.scss"):  templates.BundleFlatResetScss,
-		filepath.Join(baseDir, "web", "static", "api.http"):      templates.APIHttp,
 	}
 	if err := generate.FilesByData(files, b); err != nil {
 		return err
