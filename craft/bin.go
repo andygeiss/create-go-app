@@ -11,17 +11,20 @@ import (
 
 // Bin ...
 type Bin struct {
-	Build     string `json:"build"`
-	Generator string `json:"generator"`
-	Name      string `json:"name"`
-	Path      string `json:"path"`
-	Version   string `json:"version"`
+	Build      string `json:"build"`
+	Generator  string `json:"generator"`
+	GitVersion string `json:"git_version"`
+	Name       string `json:"name"`
+	Path       string `json:"path"`
+	Version    string `json:"version"`
 }
 
 // Craft ...
 func (b *Bin) Craft() error {
 	// Create project dir.
 	os.MkdirAll(filepath.Join(b.Name), 0755)
+	// Set the Git version
+	b.GitVersion = "v0.1.0"
 	// Enable Go modules.
 	wd, _ := os.Getwd()
 	os.Chdir(b.Name)
