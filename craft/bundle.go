@@ -2,7 +2,6 @@ package craft
 
 import (
 	"os"
-	"os/exec"
 	"path/filepath"
 
 	"github.com/andygeiss/create-go-app/craft/templates"
@@ -42,34 +41,6 @@ func (b *Bundle) Craft() error { // Add files.
 	); err != nil {
 		return err
 	}
-	// Compile the SASS.
-	cmd := exec.Command("sassc",
-		"-t", "compressed",
-		filepath.Join(baseDir, "web", "src", "app.scss"),
-		filepath.Join(baseDir, "web", "static", "bundle.css"),
-	)
-	cmd.Stderr = os.Stderr
-	cmd.Stdout = os.Stdout
-	if err := cmd.Run(); err != nil {
-		return err
-	}
-	// Compress the CSS.
-	exec.Command("postcss",
-		"-u", "autoprefixer", "--autoprefixer.overrideBrowserslist", "'defaults, ie 10'",
-		"-o", filepath.Join(baseDir, "web", "static", "bundle.min.css"),
-		filepath.Join(baseDir, "web", "static", "bundle.css"),
-	).Run()
-	// Compress the JavaScript.
-	exec.Command("java", "-jar",
-		filepath.Join(os.Getenv("GOPATH"), "bin", "closure-compiler.jar"),
-		"--compilation_level", "SIMPLE_OPTIMIZATIONS",
-		"--language_out", "ECMASCRIPT_2015",
-		"--js", filepath.Join(baseDir, "web", "static", "bundle.js"),
-		"--js_output_file", filepath.Join(baseDir, "web", "static", "bundle.min.js"),
-	).Run()
-	// Cleanup.
-	os.Remove(filepath.Join(baseDir, "web", "static", "bundle.css"))
-	os.Remove(filepath.Join(baseDir, "web", "static", "bundle.js"))
 	// Copy index.html
 	merge.Files(
 		filepath.Join(baseDir, "web", "static", "index.html"),

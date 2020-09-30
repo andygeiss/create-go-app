@@ -37,10 +37,19 @@ class View extends FlatElement {
 
 const view = new View(viewModel);`
 
-// BundleAppScss ...
-var BundleAppScss = `
-@import "flat-mixins.scss";
-@import "flat-reset.scss";
+// BundleAppCss ...
+var BundleAppCss = `
+/* reset */
+* {
+    border: none;
+    box-sizing: border-box;
+    font: inherit;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    text-decoration: none;
+    transition: all .35s;
+}
 
 body {
     display: grid;

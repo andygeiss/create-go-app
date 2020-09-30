@@ -16,6 +16,3 @@ run :
 setup :
 	@go get -u github.com/google/go-licenses
 	@go install github.com/google/go-licenses
-	@sudo apt-get install -y git default-jre npm sassc
-	@sudo npm -g install autoprefixer npm postcss-cli-simple
-	@cp tools/google/closure-compiler/*.* $(GOPATH)/bin/
