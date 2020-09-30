@@ -61,7 +61,7 @@ func (b *Bundle) Craft() error { // Add files.
 	).Run()
 	// Compress the JavaScript.
 	exec.Command("java", "-jar",
-		os.Getenv("HOME")+"/bin/closure-compiler.jar",
+		filepath.Join(os.Getenv("GOPATH"), "bin", "closure-compiler.jar"),
 		"--compilation_level", "SIMPLE_OPTIMIZATIONS",
 		"--language_out", "ECMASCRIPT_2015",
 		"--js", filepath.Join(baseDir, "web", "static", "bundle.js"),

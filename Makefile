@@ -9,6 +9,7 @@ all : compile run
 
 compile :
 	@go build $(LDFLAGS) -o $(BIN) main.go
+	@cp vendor/google/closure-compiler/*.* $(GOPATH)/bin/
 
 run :
 	$(BIN)
