@@ -28,8 +28,7 @@ type Server struct {
 	logger        *log.Logger
 	metrics       *metrics
 	router        *http.ServeMux
-	{{ range $i, $name := .Services }}{{ lc $name }}Service api.{{ $name }}Service
-	{{ end }}
+	{{ range $i, $name := .Services }}{{ lc $name }}Service api.{{ $name }}Service{{ end }}
 }
 
 // ServeHTTP ...
@@ -37,12 +36,10 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	s.router.ServeHTTP(w, r)
 }
 
-{{ range $i, $name := .Services }}
-// With{{ $name }}Service ...
+{{ range $i, $name := .Services }}// With{{ $name }}Service ...
 func (s *Server) With{{ $name }}Service(service api.{{ $name }}Service) {
 	s.{{ lc $name }}Service = service
-}
-{{ end }}
+}{{ end }}
 
 // NewServer ...
 func NewServer(bus *event.Bus) *Server {

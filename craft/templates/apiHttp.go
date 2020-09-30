@@ -11,13 +11,13 @@ content-type: application/json
 
 ###
 
-# status
-POST http://localhost:3000/status HTTP/1.1
+// {{ range $i, $name := .Services }}# {{ lc $name }}
+POST http://localhost:3000/{{ lc $name }} HTTP/1.1
 content-type: application/json
 
 {
 }
 
 ###
-
+{{ end }}
 `
