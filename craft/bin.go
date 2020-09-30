@@ -30,14 +30,22 @@ func (b *Bin) Craft() error {
 	b.Path = readProjectPathFromModFile(b.Name)
 	// Add files.
 	files := map[string]string{
-		filepath.Join(b.Name, "main.go"):                               templates.MainGo4Bin,
+		filepath.Join(b.Name, "main.go"):                               templates.MainGo4App,
 		filepath.Join(b.Name, "Makefile"):                              templates.Makefile,
+		filepath.Join(b.Name, "build", "Dockerfile"):                   templates.Dockerfile,
 		filepath.Join(b.Name, "internal", "status", "service.go"):      templates.ServiceGo,
 		filepath.Join(b.Name, "internal", "status", "service_test.go"): templates.ServiceTestGo,
 		filepath.Join(b.Name, "pkg", "api", "api.go"):                  templates.APIGo,
 		filepath.Join(b.Name, "pkg", "assert", "assert.go"):            templates.AssertGo,
 		filepath.Join(b.Name, "pkg", "event", "bus.go"):                templates.BusGo,
 		filepath.Join(b.Name, "pkg", "event", "bus_test.go"):           templates.BusTest,
+		filepath.Join(b.Name, "pkg", "server", "handlers.go"):          templates.HandlersGo,
+		filepath.Join(b.Name, "pkg", "server", "middleware.go"):        templates.MiddlewareGo,
+		filepath.Join(b.Name, "pkg", "server", "routes.go"):            templates.RoutesGo,
+		filepath.Join(b.Name, "pkg", "server", "server.go"):            templates.ServerGo,
+		filepath.Join(b.Name, "web", "src", "app.js"):                  templates.BundleAppJs,
+		filepath.Join(b.Name, "web", "src", "app.scss"):                templates.BundleAppScss,
+		filepath.Join(b.Name, "web", "src", "index.html"):              templates.BundleIndexHTML,
 	}
 	if err := generate.FilesByData(files, b); err != nil {
 		return err

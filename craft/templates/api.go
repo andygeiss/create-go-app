@@ -6,7 +6,6 @@ var APIGo = `package api
 import "context"
 
 //go:generate {{ .Generator }} -type api -name {{ .Name }} -path {{ .Path }}
-
 //go:generate {{ .Generator }} -type bundle -name {{ .Name }} -path {{ .Path }}
 
 // StatusRequest ...

@@ -12,7 +12,7 @@ import (
 
 func TestLibCraft(t *testing.T) {
 	os.RemoveAll("foo")
-	prj := craft.NewProject("b", "g", "foo", "v")
+	prj := craft.NewBin("b", "g", "foo", "v")
 	err := prj.Craft()
 	assert.That("err should be nil", t, err, nil)
 	assert.That("folder [foo] exists", t, path.HasFolder(filepath.Join("foo")), true)

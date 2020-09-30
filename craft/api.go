@@ -31,9 +31,11 @@ func (a *API) Craft() error {
 	// Update files.
 	baseDir := filepath.Join(os.Getenv("GOPATH"), "src", a.Path)
 	files := map[string]string{
+		filepath.Join(baseDir, "build", "Dockerfile"):          templates.Dockerfile,
 		filepath.Join(baseDir, "pkg", "server", "handlers.go"): templates.Handlers2Go,
 		filepath.Join(baseDir, "pkg", "server", "routes.go"):   templates.Routes2Go,
 		filepath.Join(baseDir, "pkg", "server", "server.go"):   templates.Server2Go,
+		filepath.Join(baseDir, "web", "src", "api_client.js"):  templates.APIClient,
 	}
 	if err := generate.FilesByData(files, a); err != nil {
 		return err
