@@ -28,10 +28,6 @@ generate :
 licenses :
 	@go-licenses csv $(MODULE) > LICENSE.csv
 
-setup :
-	@go get -u github.com/google/go-licenses
-	@go install github.com/google/go-licenses
-
 run :
 	$(BIN)
 
