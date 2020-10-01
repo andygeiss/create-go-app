@@ -15,6 +15,7 @@ import (
 type API struct {
 	Build      string   `json:"build"`
 	Generator  string   `json:"generator"`
+	GitBuild   string   `json:"git_build"`
 	GitVersion string   `json:"git_version"`
 	Name       string   `json:"name"`
 	Path       string   `json:"path"`
@@ -24,9 +25,15 @@ type API struct {
 
 // Craft ...
 func (a *API) Craft() error {
+	// Get the Git build
+	buf := bytes.Buffer{}
+	cmd := exec.Command("git", "rev-parse", "--short", "HEAD")
+	cmd.Stdout = &buf
+	cmd.Run()
+	a.GitBuild = buf.String()
 	// Get the Git version
-	var buf bytes.Buffer
-	cmd := exec.Command("git", "describe", "--tags")
+	buf = bytes.Buffer{}
+	cmd = exec.Command("git", "describe", "--tags")
 	cmd.Stdout = &buf
 	cmd.Run()
 	a.GitVersion = buf.String()
@@ -39,6 +46,7 @@ func (a *API) Craft() error {
 	// Update files.
 	baseDir := filepath.Join(os.Getenv("GOPATH"), "src", a.Path)
 	files := map[string]string{
+		filepath.Join(baseDir, "make.bat"):                     templates.MakeBat,
 		filepath.Join(baseDir, "build", "Dockerfile"):          templates.Dockerfile,
 		filepath.Join(baseDir, "pkg", "server", "handlers.go"): templates.Handlers2Go,
 		filepath.Join(baseDir, "pkg", "server", "routes.go"):   templates.Routes2Go,

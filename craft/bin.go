@@ -13,6 +13,7 @@ import (
 type Bin struct {
 	Build      string `json:"build"`
 	Generator  string `json:"generator"`
+	GitBuild   string `json:"git_build"`
 	GitVersion string `json:"git_version"`
 	Name       string `json:"name"`
 	Path       string `json:"path"`
@@ -24,6 +25,7 @@ func (b *Bin) Craft() error {
 	// Create project dir.
 	os.MkdirAll(filepath.Join(b.Name), 0755)
 	// Set the Git version
+	b.GitBuild = "initial"
 	b.GitVersion = "v0.1.0"
 	// Enable Go modules.
 	wd, _ := os.Getwd()
@@ -34,6 +36,7 @@ func (b *Bin) Craft() error {
 	// Add files.
 	files := map[string]string{
 		filepath.Join(b.Name, "main.go"):                               templates.MainGo4App,
+		filepath.Join(b.Name, "make.bat"):                              templates.MakeBat,
 		filepath.Join(b.Name, "Makefile"):                              templates.Makefile,
 		filepath.Join(b.Name, "build", "Dockerfile"):                   templates.Dockerfile,
 		filepath.Join(b.Name, "internal", "status", "service.go"):      templates.ServiceGo,
