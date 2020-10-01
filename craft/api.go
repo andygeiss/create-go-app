@@ -5,6 +5,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 
 	"github.com/andygeiss/create-go-app/craft/templates"
 	"github.com/andygeiss/create-go-app/pkg/generate"
@@ -31,12 +32,16 @@ func (a *API) Craft() error {
 	cmd.Stdout = &buf
 	cmd.Run()
 	a.GitBuild = buf.String()
+	a.GitBuild = strings.ReplaceAll(a.GitBuild, "\r", "")
+	a.GitBuild = strings.ReplaceAll(a.GitBuild, "\n", "")
 	// Get the Git version
 	buf = bytes.Buffer{}
 	cmd = exec.Command("git", "describe", "--tags")
 	cmd.Stdout = &buf
 	cmd.Run()
 	a.GitVersion = buf.String()
+	a.GitVersion = strings.ReplaceAll(a.GitVersion, "\r", "")
+	a.GitVersion = strings.ReplaceAll(a.GitVersion, "\n", "")
 	// Parse the API and get the services.
 	parser := parse.NewParser()
 	if err := parser.Parse(); err != nil {
