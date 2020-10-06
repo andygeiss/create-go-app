@@ -10,6 +10,13 @@ import (
 	"time"
 )
 
+func (s *Server) withLogging(next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		s.logger.Printf("%-6s %-20s %-50s", "INFO", r.RemoteAddr, r.RequestURI)
+		next.ServeHTTP(w, r)
+	}
+}
+
 func (s *Server) withMetrics(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		s.metrics.mutex.Lock()
@@ -22,10 +29,4 @@ func (s *Server) withMetrics(next http.HandlerFunc) http.HandlerFunc {
 		s.metrics.mutex.Unlock()
 	}
 }
-
-func (s *Server) withLogging(next http.HandlerFunc) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		s.logger.Printf("%-6s %-20s %-50s", "INFO", r.RemoteAddr, r.RequestURI)
-		next.ServeHTTP(w, r)
-	}
-}`
+`

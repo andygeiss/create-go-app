@@ -50,7 +50,7 @@ func (b *Bin) Craft() error {
 		filepath.Join(b.Name, "pkg", "server", "routes.go"):            templates.RoutesGo,
 		filepath.Join(b.Name, "pkg", "server", "server.go"):            templates.ServerGo,
 		filepath.Join(b.Name, "web", "src", "app.js"):                  templates.BundleAppJs,
-		filepath.Join(b.Name, "web", "src", "app.css"):                 templates.BundleAppCss,
+		filepath.Join(b.Name, "web", "src", "app.css"):                 templates.BundleAppCSS,
 		filepath.Join(b.Name, "web", "src", "index.html"):              templates.BundleIndexHTML,
 	}
 	if err := generate.FilesByData(files, b); err != nil {

@@ -37,8 +37,8 @@ class View extends FlatElement {
 
 const view = new View(viewModel);`
 
-// BundleAppCss ...
-var BundleAppCss = `/* reset */
+// BundleAppCSS ...
+var BundleAppCSS = `/* reset */
 * {
     border: none;
     box-sizing: border-box;
