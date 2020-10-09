@@ -28,7 +28,8 @@ type Server struct {
 	logger        *log.Logger
 	metrics       *metrics
 	router        *http.ServeMux
-	{{ range $i, $name := .Services }}{{ lc $name }}Service api.{{ $name }}Service{{ end }}
+	{{ range $i, $name := .Services }}{{ lc $name }}Service api.{{ $name }}Service
+	{{ end }}
 }
 
 // ServeHTTP ...
