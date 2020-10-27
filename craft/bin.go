@@ -39,6 +39,7 @@ func (b *Bin) Craft() error {
 		filepath.Join(b.Name, "make.bat"):                              templates.MakeBat,
 		filepath.Join(b.Name, "Makefile"):                              templates.Makefile,
 		filepath.Join(b.Name, "build", "Dockerfile"):                   templates.Dockerfile,
+		filepath.Join(b.Name, "docs", ".gitkeep"):                      "",
 		filepath.Join(b.Name, "internal", "status", "service.go"):      templates.ServiceGo,
 		filepath.Join(b.Name, "internal", "status", "service_test.go"): templates.ServiceTestGo,
 		filepath.Join(b.Name, "pkg", "api", "api.go"):                  templates.APIGo,

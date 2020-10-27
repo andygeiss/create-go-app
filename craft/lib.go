@@ -30,6 +30,7 @@ func (b *Lib) Craft() error {
 	b.Path = readProjectPathFromModFile(b.Name)
 	// Add files.
 	files := map[string]string{
+		filepath.Join(b.Name, "docs", ".gitkeep"):           "",
 		filepath.Join(b.Name, "pkg", "assert", "assert.go"): templates.AssertGo,
 	}
 	if err := generate.FilesByData(files, b); err != nil {
