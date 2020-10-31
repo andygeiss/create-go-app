@@ -16,6 +16,5 @@ func (s *Server) routes() {
 	staticPath := filepath.Join(path, "web", "static")
 	s.router.HandleFunc("/metrics", s.withLogging(s.handleMetrics()))
 	{{ range $i, $name := .Services }}s.router.HandleFunc("/{{ lc $name }}", s.withLogging(s.withMetrics(s.handle{{ $name }}())))
-	{{ end }}
-	s.router.Handle("/", http.FileServer(http.Dir(staticPath)))
+	{{ end }}s.router.Handle("/", http.FileServer(http.Dir(staticPath)))
 }`
