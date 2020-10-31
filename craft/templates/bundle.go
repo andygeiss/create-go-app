@@ -4,34 +4,33 @@ package templates
 var BundleAppJs = `
 // View ...
 class View extends FlatElement {
-    // constructor ...
+    // Constructor ...
     constructor(viewModel) {
         super();
         this.viewModel = viewModel;
-        // add event listeners
+        // Add event listeners
         this.on("status done", (data) => {
             this.render();
         });
-        // initial rendering
-        this.render();
-    }
-    // render ...
-    render() {
-        // read the state
-        let obj = this.viewModel.getState("status result");
-        if (typeof obj === "undefined") {
-            obj = { text: "default here" };
-        }
-        // modify the HTML output
-        document.querySelector("#txt_status").value = obj.text;
-        // add event listeners
+        // Add DOM event listeners
         document.querySelector("#btn_status").addEventListener("click", (evt) => {
             evt.preventDefault();
-            // status should be replaced with the corresponding service API function.
             this.viewModel.status({
                 key: "value"
             });
         });
+        // Initial rendering
+        this.render();
+    }
+    // render ...
+    render() {
+        // Read the current state
+        let obj = this.viewModel.getState("status result");
+        if (typeof obj === "undefined") {
+            obj = { text: "default here" };
+        }
+        // Modify the HTML output
+        document.querySelector("#txt_status").value = obj.text;
     }
 }
 
