@@ -27,7 +27,7 @@ func (s *Server) handle{{ $name }}() http.HandlerFunc {
 		// Publish the event.
 		s.bus.Publish("{{ sc $name }}", req)
 		// Call the service.
-		res, err := s.{{ sc $name }}Service(context.Background(), req)
+		res, err := s.{{ lc $name }}Service(context.Background(), req)
 		if err != nil {
 			s.increaseErrorCount(r)
 			s.logger.Printf("%-6s %-20s %-50s %-s", "ERROR", r.RemoteAddr, r.RequestURI, err.Error())
