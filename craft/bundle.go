@@ -25,9 +25,7 @@ func (b *Bundle) Craft() error { // Add files.
 	baseDir := filepath.Join(os.Getenv("GOPATH"), "src", b.Path)
 	// Add files.
 	files := map[string]string{
-		filepath.Join(baseDir, "web", "src", "flat-element.js"):  templates.BundleFlatElementJs,
-		filepath.Join(baseDir, "web", "src", "flat-mixins.scss"): templates.BundleFlatMixinsScss,
-		filepath.Join(baseDir, "web", "src", "flat-reset.scss"):  templates.BundleFlatResetScss,
+		filepath.Join(baseDir, "web", "src", "component.js"): templates.BundleComponentJs,
 	}
 	if err := generate.FilesByData(files, b); err != nil {
 		return err
@@ -35,7 +33,7 @@ func (b *Bundle) Craft() error { // Add files.
 	// Merge JavaScript files into one file named bundle.js.
 	if err := merge.Files(
 		filepath.Join(baseDir, "web", "static", "bundle.js"),
-		filepath.Join(baseDir, "web", "src", "flat-element.js"),
+		filepath.Join(baseDir, "web", "src", "component.js"),
 		filepath.Join(baseDir, "web", "src", "api_client.js"),
 		filepath.Join(baseDir, "web", "src", "app.js"),
 	); err != nil {
