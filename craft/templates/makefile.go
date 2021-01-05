@@ -26,6 +26,7 @@ generate :
 	@go generate ./...
 
 licenses :
+	@go get github.com/google/go-licenses
 	@go-licenses csv $(MODULE) > LICENSE.csv
 
 run :
