@@ -43,7 +43,7 @@ func TestFileRepositoryFindByKeyValue(t *testing.T) {
 	path := filepath.Join("testdata", "repository.json")
 	r := repository.NewFileRepository(path)
 	r.Add("foo", TestItem{ID: "bar", Name: "hugo", Age: 42})
-	item := r.FindByKeyValue("name", "hugo").(map[string]interface{})
+	item := r.FindByKeyValue("Name", "hugo").(map[string]interface{})
 	assert.That("FileRepository FindByKeyValue should return without an error", t, r.Error(), nil)
 	assert.That("FileRepository FindByKeyValue should return item", t, item != nil, true)
 	assert.That("FileRepository FindByKeyValue item id should be bar", t, item["ID"], "bar")
