@@ -5,7 +5,7 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"github.com/andygeiss/create-go-app/craft/templates"
+	"github.com/andygeiss/create-go-app/internal/craft/templates"
 	"github.com/andygeiss/create-go-app/pkg/generate"
 )
 
@@ -48,7 +48,7 @@ func (b *Bin) Craft() error {
 		filepath.Join(b.Name, "pkg", "event", "bus_test.go"):           templates.BusTest,
 		filepath.Join(b.Name, "pkg", "repository", "file.go"):          templates.RepositoryFileGo,
 		filepath.Join(b.Name, "pkg", "repository", "file_test.go"):     templates.RepositoryFileTestGo,
-		filepath.Join(b.Name, "pkg", "repository", "repository.go"):    templates.RepositoryRepositoryGo,
+		filepath.Join(b.Name, "pkg", "repository", "repository.go"):    templates.RepositoryGo,
 		filepath.Join(b.Name, "pkg", "repository", "util.go"):          templates.RepositoryUtilGo,
 		filepath.Join(b.Name, "pkg", "repository", "util_test.go"):     templates.RepositoryUtilTestGo,
 		filepath.Join(b.Name, "pkg", "server", "handlers.go"):          templates.HandlersGo,

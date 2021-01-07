@@ -4,7 +4,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/andygeiss/create-go-app/craft/templates"
+	"github.com/andygeiss/create-go-app/internal/craft/templates"
 	"github.com/andygeiss/create-go-app/pkg/generate"
 	"github.com/andygeiss/create-go-app/pkg/merge"
 )

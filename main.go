@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/andygeiss/create-go-app/craft"
+	"github.com/andygeiss/create-go-app/internal/craft"
 )
 
 var (

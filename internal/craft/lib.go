@@ -5,7 +5,7 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"github.com/andygeiss/create-go-app/craft/templates"
+	"github.com/andygeiss/create-go-app/internal/craft/templates"
 	"github.com/andygeiss/create-go-app/pkg/generate"
 )
 

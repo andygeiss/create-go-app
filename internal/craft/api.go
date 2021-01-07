@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/andygeiss/create-go-app/craft/templates"
+	"github.com/andygeiss/create-go-app/internal/craft/templates"
 	"github.com/andygeiss/create-go-app/pkg/generate"
 	"github.com/andygeiss/create-go-app/pkg/parse"
 )
