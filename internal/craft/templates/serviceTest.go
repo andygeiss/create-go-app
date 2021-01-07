@@ -5,6 +5,7 @@ var ServiceTestGo = `package status_test
 
 import (
 	"context"
+	"path/filepath"
 	"testing"
 
 	"{{ .Path }}/internal/status"
