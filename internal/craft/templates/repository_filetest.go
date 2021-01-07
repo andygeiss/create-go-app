@@ -9,8 +9,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"{{ .Path }}//pkg/assert"
-	"{{ .Path }}//pkg/repository"
+	"{{ .Path }}/pkg/assert"
+	"{{ .Path }}/pkg/repository"
 )
 
 type TestItem struct {

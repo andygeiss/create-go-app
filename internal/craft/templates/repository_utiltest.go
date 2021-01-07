@@ -10,8 +10,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"{{ .Path }}//pkg/assert"
-	"{{ .Path }}//pkg/repository"
+	"{{ .Path }}/pkg/assert"
+	"{{ .Path }}/pkg/repository"
 )
 
 func TestDecode(t *testing.T) {
