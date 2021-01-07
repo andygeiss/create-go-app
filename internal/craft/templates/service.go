@@ -8,6 +8,7 @@ import (
 	"errors"
 
 	"{{ .Path }}/pkg/api"
+	"{{ .Path }}/pkg/repository"
 )
 
 // Service ...
