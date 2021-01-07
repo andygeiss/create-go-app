@@ -5,7 +5,6 @@ var ServiceGo = `package status
 
 import (
 	"context"
-	"errors"
 
 	"{{ .Path }}/pkg/api"
 	"{{ .Path }}/pkg/repository"
