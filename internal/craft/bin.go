@@ -35,7 +35,7 @@ func (b *Bin) Craft() error {
 	b.Path = readProjectPathFromModFile(b.Name)
 	// Add files.
 	files := map[string]string{
-		filepath.Join(b.Name, "main.go"):                                    templates.MainGo4App,
+		filepath.Join(b.Name, "main.go"):                                    templates.MainGo4Bin,
 		filepath.Join(b.Name, "make.bat"):                                   templates.MakeBat,
 		filepath.Join(b.Name, "Makefile"):                                   templates.Makefile,
 		filepath.Join(b.Name, "build", "Dockerfile"):                        templates.Dockerfile,

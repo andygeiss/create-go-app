@@ -10,6 +10,7 @@ import (
 	"{{ .Path }}/internal/status"
 	"{{ .Path }}/pkg/api"
 	"{{ .Path }}/pkg/assert"
+	"{{ .Path }}/pkg/repository"
 )
 
 func TestService(t *testing.T) {
