@@ -13,6 +13,9 @@ import (
 )
 
 func TestService(t *testing.T) {
-	_, err := status.Service()(context.Background(), &api.StatusRequest{})
+	path := filepath.Join("testdata", "repository.json")
+	repo := repository.NewFileRepository(path)
+	_, err := status.Service(repo)(context.Background(), &api.StatusRequest{})
 	assert.That("Service should return without an error", t, err, nil)
-}`
+}
+`

@@ -11,10 +11,11 @@ import (
 )
 
 // Service ...
-func Service() api.StatusService {
-	// Initialize something ...
+func Service(repo repository.Repository) api.StatusService {
+	repo.Add("status", "OK")
 	return func(ctx context.Context, req *api.StatusRequest) (res *api.StatusResponse, err error) {
-    	// Then do great stuff ...
-		return nil, errors.New("not implemented")
+		return &api.StatusResponse{
+			Text: repo.FindByID("status").(string),
+		}, nil
 	}
 }`

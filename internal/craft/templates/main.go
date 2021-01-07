@@ -20,7 +20,7 @@ var (
 func main() {
 	bus := event.NewBus()
 	srv := server.NewServer(bus)
-	srv.WithStatusService(status.Service())
+	srv.WithStatusService(status.Service(repository.NewFileRepository("repository.json")))
 	log.Printf("####### {{ .Name }} %s (%s): Start listening ...\n", version, build)
 	log.Fatal(http.ListenAndServe(":3000", srv))
 }`
