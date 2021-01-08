@@ -1,6 +1,6 @@
 # create-go-app
 
-Create Go a microservice by using a single command.
+Create a microservice in Go by using a single command.
 
 #### Table of Contents
 
