@@ -2,10 +2,10 @@ package generate
 
 import (
 	"bytes"
-	"html/template"
 	"io/ioutil"
 	"regexp"
 	"strings"
+	"text/template"
 	"unicode"
 )
 
