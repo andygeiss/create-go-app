@@ -20,7 +20,7 @@ echo start building ...
 go mod tidy
 go mod vendor
 go generate ./...
-echo go build --ldflags \"-s -w -X=main.build=%BUILD% -X=main.name={{ .Name }} -X=main.version=%VERSION%\" -o {{ .Name }}.exe main.go 
+echo go build --ldflags "-s -w -X=main.build=%BUILD% -X=main.name={{ .Name }} -X=main.version=%VERSION%" -o {{ .Name }}.exe main.go 
 echo done.
 
 .\{{ .Name }}.exe
