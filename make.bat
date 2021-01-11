@@ -2,6 +2,7 @@
 cls
 setlocal EnableDelayedExpansion
 echo getting info from Git ...
+git pull
 git rev-parse --short HEAD > build.txt
 SET /p BUILD=<build.txt
 echo BUILD   = %BUILD%
