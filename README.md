@@ -9,7 +9,9 @@ Create a microservice in Go by using a single command.
 
 ## Installation
 
-    go get -u github.com/andygeiss/create-go-app
+    git clone https://github.com/andygeiss/create-go-app
+    cd create-go-app
+    make
 
 ## Creating Go Apps
 
