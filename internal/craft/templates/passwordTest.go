@@ -13,8 +13,8 @@ import (
 )
 
 func TestCreatePasswordHash(t *testing.T) {
-	password := "asdf 1234"
-	hash := secure.CreatePasswordHash(password)
-	assert.That("Password Hash should be valid", t, secure.IsPasswordHashValid(password, hash))
+	password := []byte("asdf 1234")
+	hash := secure.HashPassword(password)
+	assert.That("Password Hash should be valid", t, secure.IsPasswordHashValid(password, hash), true)
 }
 `
