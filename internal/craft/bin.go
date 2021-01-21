@@ -57,8 +57,6 @@ func (b *Bin) Craft() error {
 		filepath.Join(b.Name, "pkg", "secure", "encrypt_test.go"):           templates.EncryptTestGo,
 		filepath.Join(b.Name, "pkg", "secure", "hash.go"):                   templates.HashGo,
 		filepath.Join(b.Name, "pkg", "secure", "hash_test.go"):              templates.HashTestGo,
-		filepath.Join(b.Name, "pkg", "secure", "password.go"):               templates.PasswordGo,
-		filepath.Join(b.Name, "pkg", "secure", "password_test.go"):          templates.PasswordTestGo,
 		filepath.Join(b.Name, "pkg", "server", "handlers.go"):               templates.HandlersGo,
 		filepath.Join(b.Name, "pkg", "server", "middleware.go"):             templates.MiddlewareGo,
 		filepath.Join(b.Name, "pkg", "server", "routes.go"):                 templates.RoutesGo,
