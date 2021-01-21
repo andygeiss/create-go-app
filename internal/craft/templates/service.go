@@ -16,9 +16,11 @@ import (
 func Service(repo repository.Repository) api.StatusService {
 	// Save a plaintext value
 	repo.Add("status", "OK")
-	// Save an encrypted password
-	secret := hex.EncodeToString(secure.HashPassword([]byte("password")))
-	repo.Add("secret", secret)
+	// Save an encrypted password and key
+	key := secure.NewKey256()
+	ciphertext, _ := secure.Encrypt([]byte("secret_data"), key)
+	repo.Add("key", hex.EncodeToString(key[:]))
+	repo.Add("secret_data", hex.EncodeToString(ciphertext))
 	return func(ctx context.Context, req *api.StatusRequest) (res *api.StatusResponse, err error) {
 		// Create a response
 		response := &api.StatusResponse{
