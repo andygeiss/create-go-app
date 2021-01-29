@@ -39,6 +39,13 @@ func (b *Bundle) Craft() error { // Add files.
 	); err != nil {
 		return err
 	}
+	// Copy ServiceWorker ...
+	if err := merge.Files(
+		filepath.Join(baseDir, "web", "static", "service_worker.js"),
+		filepath.Join(baseDir, "web", "src", "service_worker.js"),
+	); err != nil {
+		return err
+	}
 	// Merge Stylesheet files into one file named bundle.css.
 	if err := merge.Files(
 		filepath.Join(baseDir, "web", "static", "bundle.css"),

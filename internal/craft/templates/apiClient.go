@@ -50,4 +50,15 @@ class ViewModel extends Component {
 
 const model = new Model();
 const viewModel = new ViewModel();
+
+// ServiceWorker ...
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/service_worker.js").then((reg) => {
+            console.log('ServiceWorker registration successful with scope: ', reg.scope);
+        }, (err) => {
+            console.log('ServiceWorker registration failed: ', err);
+        })
+    });
+}
 `
