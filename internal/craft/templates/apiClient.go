@@ -24,9 +24,9 @@ class Model extends Component {
 					"content-type": "application/json"
 				},
 				body: JSON.stringify(params)
-			};
-			let response = await fetch("/{{ sc $name }}", config);
-			let data = await response.json();
+            };
+            let response = await fetch("/{{ sc $name }}", config);
+            let data = await response.json();
             this.emit("{{ sc $name }} done", data);
 		});{{ end }}
     }

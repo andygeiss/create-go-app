@@ -21,17 +21,4 @@ self.addEventListener("install", (event) => {
 	);
 });
 
-self.addEventListener("fetch", (event) => {
-	event.respondWith(
-		fetch(event.request)
-		.then((response) => {
-			console.log("ServiceWorker resource " + event.request.url + " fetched from backend.");
-			return response;
-		})
-		.catch((err) => {
-			console.log("ServiceWorker resource " + event.request.url + " fetched from cache.");
-			return new Response(fallbackData["status"], { "headers": { "content-type": "application/json" }});
-		})
-	)
-});
 `
