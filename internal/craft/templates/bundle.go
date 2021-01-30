@@ -12,6 +12,9 @@ class View extends Component {
         this.on("status done", (data) => {
             this.render();
         });
+        this.on("status error", (err) => {
+            this.render();
+        });
         // Add DOM event listeners
         document.querySelector("#btn_status").addEventListener("click", (evt) => {
             evt.preventDefault();
@@ -26,6 +29,7 @@ class View extends Component {
     render() {
         // Read the current state
         let obj = this.viewModel.getState("status result");
+        // Set the default
         if (typeof obj === "undefined") {
             obj = { text: "default here" };
         }
