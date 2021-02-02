@@ -55,4 +55,11 @@ self.addEventListener("activate", (event) => {
 	);
 });
 
+// activate will handle cleaning up old caches.
+self.addEventListener("fetch", (event) => {
+	event.waitUntil(caches.match(event.request).then((names) => {
+		return response || fetch(event.request);
+	});
+});
+
 `

@@ -111,20 +111,21 @@ var BundleIndexHTML = `<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
-  <meta charset="utf-8" />
-  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-  <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control" />
-  <meta content="no-cache" http-equiv="Pragma" />
-  <meta content="0" http-equiv="Expires" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" href="bundle.css" />
-  <title> {{ .Name }} </title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="manifest.json"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="bundle.css" />
+    <title> {{ .Name }} </title>
 </head>
 
 <body>
-  <input id="txt_status" type="text" />
-  <button id="btn_status">Status</button>
-  <script src="bundle.js"></script>
+    <input id="txt_status" type="text" />
+    <button id="btn_status">Status</button>
+    <script src="bundle.js"></script>
 </body>
 
 </html>`
