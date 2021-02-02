@@ -1,6 +1,8 @@
 package craft
 
 import (
+	"encoding/hex"
+	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -64,9 +66,27 @@ func (b *Bin) Craft() error {
 		filepath.Join(b.Name, "web", "src", "app.js"):                       templates.BundleAppJs,
 		filepath.Join(b.Name, "web", "src", "app.css"):                      templates.BundleAppCSS,
 		filepath.Join(b.Name, "web", "src", "index.html"):                   templates.BundleIndexHTML,
+		filepath.Join(b.Name, "web", "static", ".gitkeep"):                  "",
 	}
 	if err := generate.FilesByData(files, b); err != nil {
 		return err
+	}
+	// Copy binary files
+	for _, file := range []struct {
+		Target  string
+		HexData string
+	}{
+		{filepath.Join(b.Name, "web", "static", "logo180.png"), templates.Logo180PNG},
+		{filepath.Join(b.Name, "web", "static", "logo192.png"), templates.Logo192PNG},
+		{filepath.Join(b.Name, "web", "static", "logo512.png"), templates.Logo512PNG},
+	} {
+		data, err := hex.DecodeString(file.HexData)
+		if err != nil {
+			return err
+		}
+		if err := ioutil.WriteFile(file.Target, data, 0644); err != nil {
+			return err
+		}
 	}
 	// Format the files.
 	exec.Command("gofmt", "-w", b.Name).Run()

@@ -113,12 +113,14 @@ var BundleIndexHTML = `<!DOCTYPE html>
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="description" content="description">
     <meta name="theme-color" content="#ffffff">
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="logo180.png"/>
+    <link rel="icon" sizes="192x192" href="logo192.png"/>
+    <link rel="shortcut icon" sizes="192x192" href="logo192.png"/>
     <link rel="manifest" href="manifest.json"/>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="bundle.css" />
+    <link rel="stylesheet" href="bundle.css" media="all"/>
     <title> {{ .Name }} </title>
 </head>
 

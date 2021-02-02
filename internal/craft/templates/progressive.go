@@ -7,9 +7,16 @@ var ManifestJSON = `{
     "display": "standalone",
     "icons": [
         {
+            "sizes": "180x180",
+            "src": "logo180.png"
+        },
+        {
+            "sizes": "192x192",
+            "src": "logo192.png"
+        },
+        {
             "sizes": "512x512",
-            "src": "logo.png",
-            "type": "image/png"
+            "src": "logo512.png"
         }
     ],
     "name": "{{ .Name }}",
@@ -55,11 +62,11 @@ self.addEventListener("activate", (event) => {
 	);
 });
 
-// activate will handle cleaning up old caches.
+// fetch will handle offline support.
 self.addEventListener("fetch", (event) => {
-	event.waitUntil(caches.match(event.request).then((names) => {
+	event.waitUntil(caches.match(event.request).then((response) => {
 		return response || fetch(event.request);
-	});
+	}));
 });
 
 `

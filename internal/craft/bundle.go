@@ -25,9 +25,9 @@ func (b *Bundle) Craft() error { // Add files.
 	baseDir := filepath.Join(os.Getenv("GOPATH"), "src", b.Path)
 	// Add files.
 	files := map[string]string{
-		filepath.Join(baseDir, "web", "src", "component.js"):      templates.BundleComponentJs,
-		filepath.Join(baseDir, "web", "src", "manifest.json"):     templates.ManifestJSON,
-		filepath.Join(baseDir, "web", "src", "service_worker.js"): templates.ServiceWorkerJs,
+		filepath.Join(baseDir, "web", "src", "component.js"):         templates.BundleComponentJs,
+		filepath.Join(baseDir, "web", "static", "manifest.json"):     templates.ManifestJSON,
+		filepath.Join(baseDir, "web", "static", "service_worker.js"): templates.ServiceWorkerJs,
 	}
 	if err := generate.FilesByData(files, b); err != nil {
 		return err
@@ -38,20 +38,6 @@ func (b *Bundle) Craft() error { // Add files.
 		filepath.Join(baseDir, "web", "src", "component.js"),
 		filepath.Join(baseDir, "web", "src", "api_client.js"),
 		filepath.Join(baseDir, "web", "src", "app.js"),
-	); err != nil {
-		return err
-	}
-	// Copy Manifest ...
-	if err := merge.Files(
-		filepath.Join(baseDir, "web", "static", "manifest.json"),
-		filepath.Join(baseDir, "web", "src", "manifest.json"),
-	); err != nil {
-		return err
-	}
-	// Copy ServiceWorker ...
-	if err := merge.Files(
-		filepath.Join(baseDir, "web", "static", "service_worker.js"),
-		filepath.Join(baseDir, "web", "src", "service_worker.js"),
 	); err != nil {
 		return err
 	}
